@@ -1,0 +1,45 @@
+{
+    "files.exclude": {
+      "**/.DS_Store": true,
+      "**/.git": true,
+      "**/coverage": true,
+      "**/tsconfig.tsbuildinfo": true
+    },
+    "search.exclude": {
+      "**/.yarn": true,
+      "**/dist": true,
+      "**/node_modules": true,
+      "**/.cache": true,
+      "**/yarn.lock": true
+    },
+    "stylelint.packageManager": "yarn",
+    "stylelint.snippet": ["css", "postcss", "scss", "css-in-js"],
+    "css.validate": false,
+    "less.validate": false,
+    "scss.validate": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": false,
+      "source.sortImports": false,
+      "source.fixAll": true
+    },
+    "eslint.codeActionsOnSave.rules": ["import/order"],
+    "javascript.format.enable": false,
+    "javascript.validate.enable": false,
+    "javascript.suggestionActions.enabled": false,
+    "eslint.packageManager": "yarn",
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact"
+    ],
+    "eslint.alwaysShowStatus": true,
+    "eslint.run": "onSave",
+    "formattingToggle.affects": ["formatOnSave"],
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.validate.enable": true,
+    "typescript.preferences.importModuleSpecifier": "project-relative",
+    "emmet.showExpandedAbbreviation": "never"
+  }
+  
