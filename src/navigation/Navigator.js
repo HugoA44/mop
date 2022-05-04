@@ -1,66 +1,75 @@
-import React from 'react'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { useAuth } from '../contexts/AuthContext'
+import React from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useAuth } from "../contexts/AuthContext";
 
-import LoginScreen from '../screens/LoginScreen'
-import RegisterScreen from '../screens/RegisterScreen'
-import DiscoveryScreen from '../screens/DiscoveryScreen'
-import TabBar from './TabBar'
-import ProfileScreen from '../screens/ProfileScreen'
-import LinesScreen from '../screens/LinesScreen'
-import AddTripModal from '../screens/AddTripModal/AddTripModal'
+import LoginScreen from "../screens/LoginScreen";
+import RegisterScreen from "../screens/RegisterScreen";
+import DiscoveryScreen from "../screens/DiscoveryScreen";
+import TabBar from "./TabBar";
+import ProfileScreen from "../screens/ProfileScreen";
+import LinesScreen from "../screens/LinesScreen";
+import AddTripModal from "../screens/AddTripModal/AddTripModal";
+import { TravelScreen } from "../screens/TravelScreen";
 
-const MainNavigator = createBottomTabNavigator()
+const MainNavigator = createBottomTabNavigator();
 
-const AuthNavigator = createNativeStackNavigator()
+const AuthNavigator = createNativeStackNavigator();
 
-function AuthStack () {
+function AuthStack() {
   return (
     <AuthNavigator.Navigator
-      initialRouteName='Login'
+      initialRouteName="Login"
       screenOptions={{
-        headerShown: false
+        headerShown: false,
       }}
     >
-      <AuthNavigator.Screen name='Login' component={LoginScreen} />
-      <AuthNavigator.Screen name='Register' component={RegisterScreen} />
+      <AuthNavigator.Screen name="Login" component={LoginScreen} />
+      <AuthNavigator.Screen name="Register" component={RegisterScreen} />
     </AuthNavigator.Navigator>
-  )
+  );
 }
 
-function MainTabNavigator () {
+function MainTabNavigator() {
   return (
     <MainNavigator.Navigator
       tabBar={(props) => <TabBar {...props} />}
       screenOptions={{
-        headerShown: false
+        headerShown: false,
       }}
     >
       <MainNavigator.Group>
-        <MainNavigator.Screen name='Mon voyage' options={{ tabBarIcon: 'earth' }} component={LinesScreen} />
-        <MainNavigator.Screen name='Découvrir' options={{ tabBarIcon: 'compass' }} component={DiscoveryScreen} />
-        <MainNavigator.Screen name='Profil' options={{ tabBarIcon: 'person' }} component={ProfileScreen} />
+        <MainNavigator.Screen
+          name="Mon voyage"
+          options={{ tabBarIcon: "earth" }}
+          component={TravelScreen}
+        />
+        <MainNavigator.Screen
+          name="Découvrir"
+          options={{ tabBarIcon: "compass" }}
+          component={DiscoveryScreen}
+        />
+        <MainNavigator.Screen
+          name="Profil"
+          options={{ tabBarIcon: "person" }}
+          component={ProfileScreen}
+        />
       </MainNavigator.Group>
-      <MainNavigator.Group screenOptions={{ presentation: 'modal' }}>
-        <MainNavigator.Screen name='Modal' component={AddTripModal} />
+      <MainNavigator.Group screenOptions={{ presentation: "modal" }}>
+        <MainNavigator.Screen name="Modal" component={AddTripModal} />
       </MainNavigator.Group>
     </MainNavigator.Navigator>
-  )
+  );
 }
 
-function Navigator () {
-  const { state } = useAuth()
+function Navigator() {
+  const { state } = useAuth();
 
   if (state.user && state.token) {
-    return (
-      <MainTabNavigator profilIsComplete={state.phone && state.school && state.class && state.status && state.biography} />
-    )
+    return <MainTabNavigator />;
   } else {
-    return (
-      <AuthStack />
-    )
+    return <AuthStack />;
   }
 }
 
-export default Navigator
+export default Navigator;

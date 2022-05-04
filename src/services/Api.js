@@ -46,26 +46,37 @@ const generateTravel = async (placetypes, longitude, latitude, ray, time) => {
   const getUserToken = await AsyncStorage.getItem("AUTH");
   const userToken = getUserToken ? JSON.parse(getUserToken).token : null;
   var data = JSON.stringify({
-    "placetype": "[\"node['amenity'='restaurant']\",\"node['amenity'='bar']\"]",
-    "latitude": 47.720948,
-    "longitude": -1.376224,
-    "ray": 0.03
+    placetype:
+      "[\"node['amenity'='restaurant']\",\"node['leisure'='fitness_centre']\"]",
+    latitude: 47.218371,
+    longitude: -1.553621,
+    ray: 0.03,
   });
-  console.log("stringify', data)
+
   try {
-    const response = await api.post("/api/travel/", data: data, {
+    const response = await api.post("/api/travel/", data, {
       headers: {
         "x-access-token": userToken,
-        'Content-Type': 'application/json',
-        // Accept: "application/json",
+        "Content-Type": "application/json",
+        Accept: "application/json",
       },
     });
-
-    return response.data;
+    console.log("RESPONSE", response.data);
+    try {
+      await AsyncStorage.setItem(
+        "CURRENT_TRAVEL_ID",
+        response.data.id.toString()
+      );
+    } catch (error) {
+      console.error(error);
+    }
+    return response?.data;
   } catch (error) {
     console.error(error.response.data);
+    throw error.response.data;
   }
 };
+
 // /**
 //  * Récupère tous les trajets
 //  * @returns { Object }

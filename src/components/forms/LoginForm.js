@@ -64,7 +64,7 @@ function LoginForm({ onLogin }) {
         w="100%"
         onPress={() => onLogin(credentials)}
       >
-        Se connnecter
+        Se connecter
       </Button>
     </Container>
   );

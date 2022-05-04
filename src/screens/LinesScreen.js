@@ -8,13 +8,6 @@ import { Lines } from "../components/lines/Lines";
 import { generateTravel } from "../services/Api";
 
 function LinesScreen({ navigation }) {
-  const getTrips = async () => {
-    const trips = await generateTravel();
-    console.log(trips);
-  };
-  useEffect(() => {
-    getTrips();
-  }, []);
   return (
     <Container style={{ maxWidth: "100%" }} h="100%" w="100%">
       <Text
@@ -29,7 +22,7 @@ function LinesScreen({ navigation }) {
           uri: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1420&q=80",
         }}
       />
-      <Button onPress={getTrips}>Générer</Button>
+
       <TabsComponent
         views={[
           {
