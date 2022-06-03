@@ -1,6 +1,5 @@
 const Images = {
-  logoLight: require('./logo/logo_light.png'),
-  logoDark: require('./logo/logo_dark.png')
-}
+  logo: require("./logo/Logo-1024.png"),
+};
 
-export default Images
+export default Images;

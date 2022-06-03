@@ -1,13 +1,24 @@
 import React, { useEffect } from "react";
 import { Button, Container, Fab, Image, Text } from "native-base";
 import Icon from "react-native-vector-icons/Ionicons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { TabsComponent } from "../components/tabs/Tabs";
 import { Maps } from "../components/maps/Maps";
 import { Lines } from "../components/lines/Lines";
 import { generateTravel } from "../services/Api";
 
-function LinesScreen({ navigation }) {
+function LinesScreen({ getCurrentTravelId }) {
+  const removeTravel = async () => {
+    try {
+      await AsyncStorage.removeItem("CURRENT_TRAVEL_ID");
+      await getCurrentTravelId();
+      console.log(AsyncStorage.getItem("CURRENT_TRAVEL_ID"));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <Container style={{ maxWidth: "100%" }} h="100%" w="100%">
       <Text
@@ -39,12 +50,13 @@ function LinesScreen({ navigation }) {
       />
 
       <Fab
-        onPress={() => navigation.navigate("Modal")}
+        onPress={removeTravel}
         position="absolute"
         bottom={90}
         right={5}
         size="md"
-        icon={<Icon name="add" size={25} />}
+        backgroundColor={"red.500"}
+        icon={<Icon name="exit" size={25} color="white" />}
       />
     </Container>
   );

@@ -19,7 +19,7 @@ function LoginScreen({ navigation }) {
     <Box style={{ backgroundColor: "white", height: "100%" }}>
       <Center>
         <Image
-          source={Images.logoDark}
+          source={Images.logo}
           size="2xl"
           resizeMode="contain"
           alt="App Logo"

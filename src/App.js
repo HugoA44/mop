@@ -58,7 +58,7 @@ const App = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <AuthProvider>
-        <StatusBar barStyle={!isDarkMode ? "light-content" : "dark-content"} />
+        <StatusBar barStyle={isDarkMode ? "light-content" : "dark-content"} />
         <NavigationContainer
           theme={navigationTheme}
           onReady={() => RNBootSplash.hide({ fade: true })}

@@ -90,19 +90,28 @@ const generateTravel = async (placetypes, longitude, latitude, ray, time) => {
 //   }
 // };
 
-// /**
-//  * Récupère un trajet
-//  * @param { Number } tripId
-//  * @returns { Object }
-//  */
-// const getOneTrip = async (tripId) => {
-//   try {
-//     const response = await api.get(`/trips/${tripId}`);
-//     return response.data;
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
+/**
+ * Récupère un trajet
+ * @param { Number } tripId
+ * @returns { Object }
+ */
+const getOneTrip = async (tripId) => {
+  const getUserToken = await AsyncStorage.getItem("AUTH");
+  const userToken = getUserToken ? JSON.parse(getUserToken).token : null;
+
+  try {
+    const response = await api.get(`/api/travel/${tripId}`, {
+      headers: {
+        "x-access-token": userToken,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 // Récupération des informations de l'utilisateur actuellement connecté
 // const getUserInfos = async () => {
@@ -126,6 +135,6 @@ export {
   registerWithRegistrationCredentials,
   generateTravel,
   // getAllTrips,
-  // getOneTrip,
+  getOneTrip,
   // getUserInfos,
 };

@@ -26,7 +26,7 @@ export const ActivitySelector = ({
       }}
     >
       <Image
-        style={{ width: "70%", height: 125 }}
+        style={{ width: "70%", height: 125, borderRadius: 5 }}
         source={{
           uri: image,
         }}

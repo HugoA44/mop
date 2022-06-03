@@ -32,7 +32,6 @@ export const TravelScreen = () => {
     setCurrentTravelId(currentTravelId);
   };
 
-  console.log(currentTravelId);
   useEffect(() => {
     getCurrentTravelId();
     Geolocation.getCurrentPosition(
@@ -53,7 +52,7 @@ export const TravelScreen = () => {
   return (
     <ScrollView>
       {currentTravelId ? (
-        <LinesScreen />
+        <LinesScreen getCurrentTravelId={getCurrentTravelId} />
       ) : (
         <Box alignItems="center">
           <Fab
@@ -61,7 +60,10 @@ export const TravelScreen = () => {
             bottom={75}
             icon={<Icon color="white" name="happy" size={20} />}
             label="Créer mon parcours"
-            onPress={() => useCreateTravel(activities, time, geoLoc)}
+            onPress={async () => {
+              await useCreateTravel(activities, time, geoLoc);
+              await getCurrentTravelId();
+            }}
           />
 
           <Text
@@ -109,7 +111,7 @@ export const TravelScreen = () => {
               activityNode="node['amenity'='restaurant']"
               name="Restauration"
               image={
-                "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1420&q=80"
+                "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
               }
             />
             <ActivitySelector
@@ -118,7 +120,25 @@ export const TravelScreen = () => {
               activityNode="node['amenity'='bar']"
               name="Bar"
               image={
-                "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1420&q=80"
+                "https://images.unsplash.com/photo-1532634922-8fe0b757fb13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1772&q=80"
+              }
+            />
+            <ActivitySelector
+              activities={activities}
+              setActivities={setActivities}
+              activityNode="node['leisure'='escape_game']"
+              name="Escape Game"
+              image={
+                "https://images.unsplash.com/photo-1522069213448-443a614da9b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1773&q=80"
+              }
+            />
+            <ActivitySelector
+              activities={activities}
+              setActivities={setActivities}
+              activityNode="node['leisure'='museum']"
+              name="Musée"
+              image={
+                "https://images.unsplash.com/photo-1554907984-15263bfd63bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
               }
             />
           </HStack>
