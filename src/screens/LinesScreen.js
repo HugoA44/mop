@@ -3,17 +3,16 @@ import { Button, Container, Fab, Image, Text } from "native-base";
 import Icon from "react-native-vector-icons/Ionicons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import { Lines } from "../components/lines/Lines";
+
 import { TabsComponent } from "../components/tabs/Tabs";
 import { Maps } from "../components/maps/Maps";
-import { Lines } from "../components/lines/Lines";
-import { generateTravel } from "../services/Api";
 
 function LinesScreen({ getCurrentTravelId }) {
   const removeTravel = async () => {
     try {
       await AsyncStorage.removeItem("CURRENT_TRAVEL_ID");
       await getCurrentTravelId();
-      console.log(AsyncStorage.getItem("CURRENT_TRAVEL_ID"));
     } catch (error) {
       console.error(error);
     }
@@ -21,12 +20,12 @@ function LinesScreen({ getCurrentTravelId }) {
 
   return (
     <Container style={{ maxWidth: "100%" }} h="100%" w="100%">
-      <Text
+      {/* <Text
         fontSize="lg"
         style={{ color: "white", position: "absolute", top: 150 }}
       >
         Paris
-      </Text>
+      </Text> */}
       <Image
         style={{ width: "100%", height: 150 }}
         source={{
@@ -34,20 +33,22 @@ function LinesScreen({ getCurrentTravelId }) {
         }}
       />
 
-      <TabsComponent
+      {/* <TabsComponent
         views={[
           {
             key: "first",
             title: "Parcours",
             component: Lines,
           },
-          {
-            key: "second",
-            title: "Carte",
-            component: Maps,
-          },
+          // {
+          //   key: "second",
+          //   title: "Carte",
+          //   component: Maps,
+          // },
         ]}
-      />
+      /> */}
+
+      <Lines />
 
       <Fab
         onPress={removeTravel}

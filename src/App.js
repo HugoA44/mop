@@ -10,6 +10,9 @@ import { GeoProvider, setLocation, useGeo } from "./contexts/GeoContext";
 import Geolocation from "react-native-geolocation-service";
 import RNBootSplash from "react-native-bootsplash";
 import { AddTripProvider } from "./contexts/AddTripContext";
+import { LogBox } from "react-native";
+LogBox.ignoreLogs(["Warning: ..."]); // Ignore log notification by message
+LogBox.ignoreAllLogs(); //Ignore all log notifications
 
 const WithContext = () => {
   return (

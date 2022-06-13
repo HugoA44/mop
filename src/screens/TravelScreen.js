@@ -129,7 +129,7 @@ export const TravelScreen = () => {
               activityNode="node['leisure'='escape_game']"
               name="Escape Game"
               image={
-                "https://images.unsplash.com/photo-1522069213448-443a614da9b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1773&q=80"
+                "https://images.unsplash.com/photo-1560005490-8ce6d5357ffa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80"
               }
             />
             <ActivitySelector
@@ -139,6 +139,51 @@ export const TravelScreen = () => {
               name="Musée"
               image={
                 "https://images.unsplash.com/photo-1554907984-15263bfd63bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+              }
+            />
+            <ActivitySelector
+              activities={activities}
+              setActivities={setActivities}
+              activityNode="node['leisure'='fishing']"
+              name="Pêche"
+              image={
+                "https://images.unsplash.com/photo-1609859682240-6860cf3d99d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80"
+              }
+            />
+            <ActivitySelector
+              activities={activities}
+              setActivities={setActivities}
+              activityNode="node['leisure'='fitness_centre']"
+              name="Fitness"
+              image={
+                "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+              }
+            />
+            <ActivitySelector
+              activities={activities}
+              setActivities={setActivities}
+              activityNode="node['leisure'='swimming_pool']"
+              name="Piscine"
+              image={
+                "https://images.unsplash.com/photo-1576610616656-d3aa5d1f4534?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+              }
+            />
+            <ActivitySelector
+              activities={activities}
+              setActivities={setActivities}
+              activityNode="node['leisure'='garden']"
+              name="Jardins"
+              image={
+                "https://images.unsplash.com/photo-1588692442236-bbdcfe705f70?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+              }
+            />
+            <ActivitySelector
+              activities={activities}
+              setActivities={setActivities}
+              activityNode="node['leisure'='horse_riding']"
+              name="Promenade Echestre"
+              image={
+                "https://images.unsplash.com/photo-1598974357801-cbca100e65d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aG9yc2V8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
               }
             />
           </HStack>

@@ -45,12 +45,20 @@ const registerWithRegistrationCredentials = async (registrationCredentials) => {
 const generateTravel = async (placetypes, longitude, latitude, ray, time) => {
   const getUserToken = await AsyncStorage.getItem("AUTH");
   const userToken = getUserToken ? JSON.parse(getUserToken).token : null;
+  console.log("placetypes", placetypes);
+  console.log("longitude", longitude);
+  console.log("latitude", latitude);
+  console.log("ray", ray);
   var data = JSON.stringify({
-    placetype:
-      "[\"node['amenity'='restaurant']\",\"node['leisure'='fitness_centre']\"]",
-    latitude: 47.218371,
-    longitude: -1.553621,
+    // placetype:
+    //   "[\"node['amenity'='restaurant']\",\"node['leisure'='fitness_centre']\"]",
+    // latitude: 47.218371,
+    // longitude: -1.553621,
     ray: 0.03,
+    placetype: placetypes,
+    longitude,
+    latitude,
+    // ray,
   });
 
   try {
